@@ -20,7 +20,7 @@ export default function Home() {
       function (response) {
         console.log(response); // Success
         // setCreateRoom(false);
-        router.push("/home/" + randomNum);
+        router.push(`/home/${randomNum}`);
         // alert("room created");
       },
       function (error) {

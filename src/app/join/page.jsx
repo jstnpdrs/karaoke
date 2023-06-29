@@ -24,7 +24,7 @@ export default function Join() {
           console.log(response); // Success
 
           response.total
-            ? router.push("/home/" + roomNumber)
+            ? router.push(`/home/${roomNumber}`)
             : alert("room not found");
           // setJoinRoom(false);
         },

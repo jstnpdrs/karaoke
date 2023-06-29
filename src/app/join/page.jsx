@@ -4,6 +4,7 @@ import { Databases, Query } from "appwrite";
 import { client, databaseID, rooms } from "../../config";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Join() {
   const databases = new Databases(client);
@@ -25,7 +26,7 @@ export default function Join() {
 
           response.total
             ? router.push(`/home/${roomNumber}`)
-            : alert("room not found");
+            : alert("Room does not exist. Please try again.");
           // setJoinRoom(false);
         },
         function (error) {
@@ -38,11 +39,11 @@ export default function Join() {
   return (
     <div className="flex w-full h-screen text-center">
       <div className="flex flex-col gap-5 m-auto">
+        <Image src="/karaokegif.gif" alt="me" width="224" height="224" />
+
         <form onSubmit={findRoom} className="flex flex-col gap-5 m-auto">
           <input
             type="number"
-            min={1000}
-            max={9999}
             value={roomNumber}
             onChange={(e) => setRoomNumber(e.target.value)}
             name="roomNumber"

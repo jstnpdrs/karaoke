@@ -62,8 +62,8 @@ export default function Monitor({ params }) {
                     console.log(error); // Failure
                   }
                 );
-              setVideoKey(response.documents[1].$id);
-              setVideoId(response.documents[1].videoId);
+              setVideoKey(response.documents[1]?.$id);
+              setVideoId(response.documents[1]?.videoId);
               // alert(response.documents[0].$id);
             } else {
               alert("No Video Found");
@@ -90,13 +90,16 @@ export default function Monitor({ params }) {
   //   getVideo();
   // }, []);
 
-  function deleteVideo() {
-    databases.deleteDocument(databaseID, queue, videoKey).then(
-      function (response) {
+  async function nextVideo() {
+    // alert(videoKey);
+    await databases.deleteDocument(databaseID, queue, videoKey).then(
+      async function (response) {
         console.log(response); // Success
+        await getVideo();
       },
-      function (error) {
-        console.log(error); // Failure
+      async function (error) {
+        await getVideo();
+        // console.log(error); // Failure
       }
     );
   }
@@ -121,42 +124,52 @@ export default function Monitor({ params }) {
       );
   }
   return (
-    <div className="px-5 sm:px-10">
+    <div className="p-5 sm:p-10">
+      <h1 className="tracking-wider uppercase flex-none text-center pb-2 text-gray-300">
+        Room Number:{" "}
+        <span className="font-bold tracking-widest">{params.roomNumber}</span>
+      </h1>
+      <div
+        id="player"
+        className="flex w-full min-h-[400px] border-2 border-red-600 shadow rounded-xl shadow-red-800"
+      >
+        {!videoId && (
+          <>
+            <button
+              onClick={getVideo}
+              className="animate-pulse m-auto p-5 text-xl w-56 h-56 text-center border-2 border-green-500 shadow shadow-green-400 rounded-full uppercase"
+            >
+              <div class="translate-x-3 translate-y-3 w-0 h-0 m-auto border-t-[50px] border-t-transparent border-l-[75px] border-l-green-500 border-b-[50px] border-b-transparent"></div>
+              <p className="mt-1 translate-y-4 text-center text-gray-300">
+                load queue
+              </p>
+            </button>
+          </>
+        )}
+      </div>
+      {/* {videoKey} : {videoId} */}
+      {videoId && (
+        <button
+          onClick={nextVideo}
+          className="p-5 text-xl w-full mt-10 text-center border-2 border-yellow-500 shadow shadow-yellow-400 rounded-xl"
+        >
+          Next
+        </button>
+      )}
       <div className="grid w-full grid-cols-2 gap-4 py-5">
         <button
           onClick={() => router.back()}
-          className="p-5 text-xl text-center border-2 border-gray-500 shadow shadow-gray-400 rounded-xl"
+          className="p-3 text-xl text-center border-2 border-gray-500 shadow shadow-gray-400 rounded-xl"
         >
           Back
         </button>
         <a
           href={``}
-          className="p-5 text-xl text-center border-2 border-blue-500 shadow shadow-blue-400 rounded-xl"
+          className="p-3 text-xl text-center border-2 border-blue-500 shadow shadow-blue-400 rounded-xl"
         >
           Refresh
         </a>
       </div>
-      <div
-        id="player"
-        className="w-full min-h-[400px] border-2 border-red-600 shadow rounded-xl shadow-red-800"
-      ></div>
-      {videoKey} : {videoId}
-      <button
-        onClick={getVideo}
-        // onClick={async () => {
-        // await databases.deleteDocument(databaseID, queue, videoKey).then(
-        // function (response) {
-        // console.log(response); // Success
-        // },
-        // function (error) {
-        // console.log(error); // Failure
-        // }
-        // );
-        // }}
-        className="p-5 text-xl w-full mt-10 text-center border-2 border-yellow-500 shadow shadow-yellow-400 rounded-xl"
-      >
-        Next
-      </button>
     </div>
   );
 }

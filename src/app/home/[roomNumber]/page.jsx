@@ -1,9 +1,12 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Page({ params }) {
   return (
     <div className="flex w-full h-screen text-center">
       <div className="flex flex-col gap-5 m-auto">
+        <Image src="/karaokegif.gif" alt="me" width="224" height="224" />
+
         <h1 className="text-lg tracking-wider uppercase">
           Room Number:{" "}
           <span className="font-bold tracking-widest">{params.roomNumber}</span>

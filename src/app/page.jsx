@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Databases, ID } from "appwrite";
 import { client, databaseID, rooms } from "../config";
+import Image from "next/image";
 
 export default function Home() {
   const databases = new Databases(client);
@@ -51,7 +52,15 @@ export default function Home() {
   } else {
     return (
       <div className="flex w-full h-screen text-center">
-        <div className="flex flex-col gap-5 m-auto">
+        <div className="flex flex-col gap-5 m-auto w-56">
+          {/* <iframe
+            src="https://gifer.com/embed/73hw"
+            width={224}
+            height={224}
+            frameBorder="0"
+            allowFullScreen
+          ></iframe> */}
+          <Image src="/karaokegif.gif" alt="me" width="224" height="224" />
           <button
             // onClick={newRoom}
             onClick={() => setCreateRoom(true)}

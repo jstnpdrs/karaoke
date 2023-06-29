@@ -15,7 +15,7 @@ export default function Page({ params }) {
           Monitor
         </a>
         <Link
-          href="/controller"
+          href={"/controller/" + params.roomNumber}
           className="w-56 p-2 text-xl tracking-wider text-orange-100 border-2 border-orange-500 shadow rounded-xl shadow-orange-500"
         >
           Controller

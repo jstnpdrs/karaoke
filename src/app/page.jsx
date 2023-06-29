@@ -35,7 +35,7 @@ export default function Home() {
       const interval = setInterval(async () => {
         newRoom();
         // setCreateRoom(false);
-      }, 3000);
+      }, 2000);
       return () => clearInterval(interval);
     }
     return;

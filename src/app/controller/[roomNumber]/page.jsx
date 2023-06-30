@@ -26,7 +26,7 @@ export default function Controller({ params }) {
   }, [query]);
 
   async function addToQueue(videoId, title) {
-    const conf = confirm("Add (" + title + ") to queue?");
+    const conf = confirm('Add "' + title + '" to queue?');
     if (conf) {
       await databases
         .createDocument(databaseID, queue, ID.unique(), {
@@ -67,7 +67,7 @@ export default function Controller({ params }) {
         <div className="flex items-center gap-5">
           <Link
             href={"/home/" + params.roomNumber}
-            className="px-3 tracking-wider text-red-100 border-2 border-red-500 shadow  rounded-xl shadow-red-500"
+            className="px-3 tracking-wider text-red-100 border-2 border-red-500 shadow rounded-xl shadow-red-500"
           >
             Back
           </Link>
@@ -95,15 +95,21 @@ export default function Controller({ params }) {
           </p>
         </div>
         <div className="flex flex-col w-full pb-10">
-          {filteredSongs.map((item) => {
+          {filteredSongs.map((item, i) => {
             return (
-              <p
-                onClick={() => addToQueue(item.videoId, item.title)}
-                key={"vid" + item.videoId}
+              <div
+                key={"vid" + i}
                 className="py-2 text-xs tracking-widest text-left text-gray-300 uppercase cursor-pointer hover:bg-slate-800"
               >
-                {item.title} <p className="text-[8px]">{item.channelTitle}</p>
-              </p>
+                <p
+                  onClick={() => addToQueue(item.videoId, item.title)}
+
+                  // className="py-2 text-xs tracking-widest text-left text-gray-300 uppercase cursor-pointer hover:bg-slate-800"
+                >
+                  {item.title}
+                </p>
+                <p className="text-[8px] text-left">{item.channelTitle}</p>
+              </div>
             );
           })}
         </div>

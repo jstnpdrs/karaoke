@@ -55,16 +55,23 @@ export default function Controller({ params }) {
   };
 
   return (
-    <div className="flex w-full text-center relative">
-      <div className="flex flex-col gap-5 mt-5 mx-auto px-3 w-80">
-        <div className="flex gap-5 items-center">
+    <div className="relative flex w-full text-center">
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4945522729831776"
+          crossorigin="anonymous"
+        ></script>
+      </head>
+      <div className="flex flex-col gap-5 px-3 mx-auto mt-5 w-80">
+        <div className="flex items-center gap-5">
           <Link
             href={"/home/" + params.roomNumber}
-            className=" px-3 tracking-wider text-red-100 border-2 border-red-500 shadow rounded-xl shadow-red-500"
+            className="px-3 tracking-wider text-red-100 border-2 border-red-500 shadow  rounded-xl shadow-red-500"
           >
             Back
           </Link>
-          <h1 className="tracking-wider uppercase flex-none">
+          <h1 className="flex-none tracking-wider uppercase">
             Room Number:{" "}
             <span className="font-bold tracking-widest">
               {params.roomNumber}
@@ -78,7 +85,7 @@ export default function Controller({ params }) {
             type="text"
             name="search"
             id="search"
-            className="w-full p-2 mb-2 bg-transparent text-xl tracking-wider text-center border-2 shadow text-slate-100 border-slate-400 rounded-xl shadow-slate-300"
+            className="w-full p-2 mb-2 text-xl tracking-wider text-center bg-transparent border-2 shadow text-slate-100 border-slate-400 rounded-xl shadow-slate-300"
             placeholder="Search Songs"
             autoComplete="off"
           />
@@ -87,13 +94,13 @@ export default function Controller({ params }) {
             <span className="text-[10px]">{filteredSongs.length}</span>
           </p>
         </div>
-        <div className="w-full flex flex-col pb-10">
+        <div className="flex flex-col w-full pb-10">
           {filteredSongs.map((item) => {
             return (
               <p
                 onClick={() => addToQueue(item.videoId, item.title)}
                 key={"vid" + item.videoId}
-                className="cursor-pointer py-2 hover:bg-slate-800 text-left uppercase text-xs text-gray-300 tracking-widest"
+                className="py-2 text-xs tracking-widest text-left text-gray-300 uppercase cursor-pointer hover:bg-slate-800"
               >
                 {item.title} <p className="text-[8px]">{item.channelTitle}</p>
               </p>

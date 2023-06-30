@@ -125,7 +125,14 @@ export default function Monitor({ params }) {
   }
   return (
     <div className="p-5 sm:p-10">
-      <h1 className="tracking-wider uppercase flex-none text-center pb-2 text-gray-300">
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4945522729831776"
+          crossorigin="anonymous"
+        ></script>
+      </head>
+      <h1 className="flex-none pb-2 tracking-wider text-center text-gray-300 uppercase">
         Room Number:{" "}
         <span className="font-bold tracking-widest">{params.roomNumber}</span>
       </h1>
@@ -137,10 +144,10 @@ export default function Monitor({ params }) {
           <>
             <button
               onClick={getVideo}
-              className="animate-pulse m-auto p-5 text-xl w-56 h-56 text-center border-2 border-green-500 shadow shadow-green-400 rounded-full uppercase"
+              className="w-56 h-56 p-5 m-auto text-xl text-center uppercase border-2 border-green-500 rounded-full shadow animate-pulse shadow-green-400"
             >
               <div class="translate-x-3 translate-y-3 w-0 h-0 m-auto border-t-[50px] border-t-transparent border-l-[75px] border-l-green-500 border-b-[50px] border-b-transparent"></div>
-              <p className="mt-1 translate-y-4 text-center text-gray-300">
+              <p className="mt-1 text-center text-gray-300 translate-y-4">
                 load queue
               </p>
             </button>
@@ -151,7 +158,7 @@ export default function Monitor({ params }) {
       {videoId && (
         <button
           onClick={nextVideo}
-          className="p-5 text-xl w-full mt-10 text-center border-2 border-yellow-500 shadow shadow-yellow-400 rounded-xl"
+          className="w-full p-5 mt-10 text-xl text-center border-2 border-yellow-500 shadow shadow-yellow-400 rounded-xl"
         >
           Next
         </button>

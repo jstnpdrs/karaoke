@@ -52,7 +52,14 @@ export default function Home() {
   } else {
     return (
       <div className="flex w-full h-screen text-center">
-        <div className="flex flex-col gap-5 m-auto w-56">
+        <head>
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4945522729831776"
+            crossorigin="anonymous"
+          ></script>
+        </head>
+        <div className="flex flex-col w-56 gap-5 m-auto">
           {/* <iframe
             src="https://gifer.com/embed/73hw"
             width={224}

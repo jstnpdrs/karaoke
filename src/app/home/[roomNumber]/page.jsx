@@ -4,6 +4,13 @@ import Link from "next/link";
 export default function Page({ params }) {
   return (
     <div className="flex w-full h-screen text-center">
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4945522729831776"
+          crossorigin="anonymous"
+        ></script>
+      </head>
       <div className="flex flex-col gap-5 m-auto">
         <Image src="/karaokegif.gif" alt="me" width="224" height="224" />
 
